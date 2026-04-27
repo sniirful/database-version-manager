@@ -1,0 +1,12 @@
+*.md
+*.yaml
+Dockerfile
+
+# Copied from .gitignore.
+
+.idea/
+
+.venv/
+venv/
+
+data/

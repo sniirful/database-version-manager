@@ -1,0 +1,28 @@
+services:
+  database:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: test
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./data:/var/lib/mysql
+    healthcheck:
+      test: [ "CMD", "mysqladmin", "ping", "-h", "localhost", "-uroot", "-proot" ]
+      interval: 3s
+      timeout: 3s
+      retries: 30
+
+  database-version-manager:
+    build: .
+    environment:
+      HOST: database
+      PORT: 3306
+      USERNAME: root
+      PASSWORD: root
+    depends_on:
+      database:
+        condition: service_healthy

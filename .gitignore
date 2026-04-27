@@ -1,0 +1,9 @@
+# NOTE: when changing this file, remember to update
+#       the .dockerignore as well.
+
+.idea/
+
+.venv/
+venv/
+
+data/
