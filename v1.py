@@ -1,4 +1,4 @@
-from . import get_database_transaction
+from __init__ import get_database_transaction
 
 
 def main():
